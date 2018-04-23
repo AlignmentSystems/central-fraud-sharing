@@ -16,14 +16,22 @@ const parseIdentifier = (queryIdentifier) => {
   return { identifier, identifierType }
 }
 
-const randomFraud = () => {
-  const createdDate = new Date()
-  const score = Math.round(createdDate.getMilliseconds() / 10)
-  return { id: Uuid(), createdDate, score }
-}
+// #163 disabling Fraud Demo.
+// const randomFraud = () => {
+//   const createdDate = new Date()
+//   const score = Math.round(createdDate.getMilliseconds() / 10)
+//   return { id: Uuid(), createdDate, score }
+// }
 
 const calculateFraud = (account, account2 = '') => {
-  const fraud = randomFraud()
+// #163 disabling Fraud Demo - updates start.
+//  const fraud = randomFraud()
+  const fraud = {
+    id: Uuid(),
+    createdDate: new Date(),
+    score: 10
+  }
+  // #163 disabling Fraud Demo - updates end.
   if (account.includes(BLACKLIST) || account2.includes(BLACKLIST)) {
     fraud.score = 100
   } else if (account.includes(HIGH_FRAUD) || account2.includes(HIGH_FRAUD)) {
